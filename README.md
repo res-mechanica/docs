@@ -163,18 +163,16 @@ Request body
   "query_id": "af76e5",
   "consumer_id": "w3e0-p8xc",
   "state": {
-          "contract": "XL", 
-          "age": 37,
-          //...
+    "contract": "XL", 
+    "age": 37,
   },
   "actions": [
     "actionA",
     "actionB",
     "actionN",
-    //...
   ],
   "limit": 3,
-  "test_api": false
+  "test_api": false,
   "status": 1
 }
 ```
@@ -185,10 +183,9 @@ Responses
 {
     "query_id": "af76e5",
     "actions": [
-        "actionC",
-        "actionA",
-        "actionB",
-        //…
+      "actionC",
+      "actionA",
+      "actionB",
     ],
     "status": 1
 }
@@ -201,7 +198,7 @@ Request body
 ``` json
 {
   "query_id": "af76e5",
-  "action": "actionC"
+  "action": "actionC",
   "test_api": false
 }
 ```
@@ -224,7 +221,7 @@ Request body
   "query_id": "af76e5",
   "consumer_id": "w3e0-p8xc",
   "event_type": "add_to_basket",
-  "value": 1.337
+  "value": 1.337,
   "test_api": false
 }
 ```
@@ -253,19 +250,17 @@ Request body
 {
     "customers": [
         {
-            "query_id": "af76e5",
-            "consumer_id": "w3e0-p8xc",
-            "state": {
-            "contract": "XL", 
-            "age": 37,
-            //...
+          "query_id": "af76e5",
+          "consumer_id": "w3e0-p8xc",
+          "state": {
+          "contract": "XL", 
+          "age": 37,
         },
     ],
     "actions": [
-        "actionA",
-        "actionB",
-        "actionN",
-        //...
+      "actionA",
+      "actionB",
+      "actionN",
     ],
     "limit": 3,
     "test_api": false
@@ -282,10 +277,8 @@ Responses
         "actionC",
         "actionA",
         "actionB",
-        //…
       ]
   },
-  //…
 ]
 ```
 
@@ -300,7 +293,6 @@ Request body
       "query_id": "af76e5",
       "action": "actionC"
     },
-    //...
   ],
   "test_api": false
 }
@@ -328,7 +320,6 @@ Request body
       "event_type": "add_to_basket",
       "value": 1.337
     },
-    //...
   ],
   "test_api": false
 }
