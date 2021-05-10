@@ -181,13 +181,13 @@ Responses
 
 ``` json
 {
-    "query_id": "af76e5",
-    "actions": [
-      "actionC",
-      "actionA",
-      "actionB",
-    ],
-    "status": 1
+  "query_id": "af76e5",
+  "actions": [
+    "actionC",
+    "actionA",
+    "actionB",
+  ],
+  "status": 1
 }
 ```
 
@@ -207,7 +207,7 @@ Responses
 
 ``` json
 {
-    "status": 1
+  "status": 1
 }
 ```
 
@@ -229,7 +229,7 @@ Request body
 Responses
 ``` json
 {
-    "status": 1
+  "status": 1
 }
 ```
 
@@ -248,22 +248,22 @@ Request body
 
 ``` json
 {
-    "customers": [
-        {
-          "query_id": "af76e5",
-          "consumer_id": "w3e0-p8xc",
-          "state": {
-          "contract": "XL", 
-          "age": 37,
-        },
-    ],
-    "actions": [
-      "actionA",
-      "actionB",
-      "actionN",
-    ],
-    "limit": 3,
-    "test_api": false
+  "customers": [
+      {
+        "query_id": "af76e5",
+        "consumer_id": "w3e0-p8xc",
+        "state": {
+        "contract": "XL", 
+        "age": 37,
+      }
+  ],
+  "actions": [
+    "actionA",
+    "actionB",
+    "actionN",
+  ],
+  "limit": 3,
+  "test_api": false
 }
 ```
 
