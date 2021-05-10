@@ -253,9 +253,10 @@ Request body
         "query_id": "af76e5",
         "consumer_id": "w3e0-p8xc",
         "state": {
-        "contract": "XL", 
-        "age": 37,
-      }
+          "contract": "XL", 
+          "age": 37,
+        }
+      },
   ],
   "actions": [
     "actionA",
