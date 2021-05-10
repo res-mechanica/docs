@@ -6,21 +6,21 @@ Version: 2.3.9
 
 1. [Introduction](#Introduction)
 1. [Motivation](#Motivation)
-1. [Communication flow with goodmoves SaaS](#Communication flow with goodmoves SaaS)
+1. [Communication flow with goodmoves SaaS](#Communication-flow-with-goodmoves-SaaS)
 1. [Integration](#Integration)
-1. [Important data](#Important data)
+1. [Important data](#Important-data)
 1. [state](#state)
 1. [actions](#actions)
 1. [reward](#reward)
 1. [query_id](#query_id)
-1. [Sources of Data](#Sources of Data)
-1. [Ways to integrate](#Ways to integrate)
-1. [GDPR Notice](#GDPR Notice)
-1. [API Docs](#API Docs)  
+1. [Sources of Data](#Sources-of-Data)
+1. [Ways to integrate](#Ways-to-integrate)
+1. [GDPR Notice](#GDPR-Notice)
+1. [API Docs](#API-Docs)  
     1. [Introduction](#Introduction)  
     1. [Versioning](#Versioning)  
     1. [Authentication](#Authentication)
-    1. [Error handling](#Error handling)
+    1. [Error handling](#Error-handling)
     1. [Endpoints](#Endpoints)
         1. [POST /action - Request a prioritised list of actions](#POST-/action-Request-a-prioritised-list-of-actions)
         1. [PATCH /action - Tell goodmoves which action was selected](#PATCH-/action-Tell-goodmoves-which-action-was-selected)
@@ -29,7 +29,7 @@ Version: 2.3.9
   
 
 ### Introduction
-Motivation
+#### Motivation
 This document addresses developers and tech deciders who want to integrate goodmoves into the tools and systems they use and maintain.
 As Software-as-a-Service, goodmoves brings the power of actual artificial intelligence to next best actions (NBA).
 When communicating with a customer, be it through a webshop, an online marketing campaign or a phone call,
@@ -53,7 +53,7 @@ the first signs of contract termination trigger a discounted offer. goodmoves pi
 actions. Here, the algorithm has learned that a 5 % discount is the most profitable way to prevent this customer from churn.
 
 
-Communication flow with goodmoves SaaS
+#### Communication flow with goodmoves SaaS
 goodmoves uses reinforcement learning to learn about the customers’ behaviour and suggest the next best action.
 This is achieved through a state-action-reward cycle. Here, the state represents the available information about a customer,
 for which the decision (an action) has to be made. It consists of customer data like an ID, demographic information,
