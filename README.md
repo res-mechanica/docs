@@ -1,4 +1,4 @@
-Version: 2.3.9
+Version: 3.1.0
 # integration-manual
 
 
@@ -121,13 +121,14 @@ effort, or even at all, within the goodmoves SaaS.
 #### Introduction
 We offer a RESTful API to interact securely with our service. Its URL includes the major version number of the software
 before specifying the actual endpoint. In case of version 2 and the action endpoint, the URL has the following form:
-https://api.goodmoves.ai/2/action
+https://api.goodmoves.ai/v3/action/l59sdl42gkj
 
 #### Versioning
-Currently, our API is available in version 2.3.9. We strive for careful version updates with backwards compatibility.
+Currently, our API is available in version 3.1.0. We strive for careful version updates with backwards compatibility.
 To this end, we will keep previous versions of the API available for a reasonable migration period.
 
 #### Authentication
+FIXME: JWT AUTH
 The API client authenticates with API keys. You will be granted access to https://goodmoves.ai/auth/login once you sign
 up for our service, where you will find information about your current API keys.
 Error handling
@@ -136,8 +137,17 @@ few resource items when used in batch mode, but is successful for the remainders
 return a list telling you which batch items had failed.
 
 
-#### Endpoints
-#### `POST /action` Request a prioritised list of actions
+#### Endpoints 
+##### `GET /` Retrieve version information of the API
+Calling this endpoint returns basic API version information.
+
+Responses
+
+``` json
+```
+
+#### Endpoints NBA
+##### `POST /action/{case_id}` Request a prioritised list of actions
 Return a sorted list of prioritised NBAs, best recommendation first.
 State history shall be provided by clients and can be retrieved in multiple ways, depending on the existing tracking
 setup and privacy requirements:
@@ -148,39 +158,258 @@ setup and privacy requirements:
 
 Request body
 
-[img]
+``` json
+{
+  "query_id": "af76e5",
+  "consumer_id": "w3e0-p8xc",
+  "state": {
+          "contract": "XL", 
+          "age": 37,
+          //...
+  },
+  "actions": [
+    "actionA",
+    "actionB",
+    "actionN",
+    //...
+  ],
+  "limit": 3,
+  "test_api": false
+  "status": 1
+}
+```
 
 Responses
 
-[img]
+``` json
+{
+    "query_id": "af76e5",
+    "actions": [
+        "actionC",
+        "actionA",
+        "actionB",
+        //…
+    ],
+    "status": 1
+}
+```
 
-#### `PATCH /action` Tell goodmoves which action was selected
+##### `POST /action/{case_id}/select` Tell goodmoves which action was selected
 Record the action that was selected by the client from the list of actions returned by a previous call to POST /action.
 Request body
 
-[img]
+``` json
+{
+  "query_id": "af76e5",
+  "action": "actionC"
+  "test_api": false
+}
+```
 
 Responses
 
-[img]
+``` json
+{
+    "status": 1
+}
+```
 
 
-#### `POST /reward` Send a reward related to customer
-Process a list of rewards of a certain value for the given query_id.
+##### `POST /reward/{case_id}` Send a reward related to customer
+Process a rewards signal for the given query_id.
 Request body
 
-[img]
+``` json
+{
+  "query_id": "af76e5",
+  "consumer_id": "w3e0-p8xc",
+  "event_type": "add_to_basket",
+  "value": 1.337
+  "test_api": false
+}
+```
 
 Responses
+``` json
+{
+    "status": 1
+}
+```
 
-[img]
 
-#### `GET /` Retrieve version information of the API
-Calling this endpoint returns basic API version information.
+#### Endpoints NBA Batch
+##### `POST /action/{case_id}/batch` Request a prioritised list of actions
+Return a sorted list of prioritised NBAs, best recommendation first.
+State history shall be provided by clients and can be retrieved in multiple ways, depending on the existing tracking
+setup and privacy requirements:
+- SST (server side tracking)
+- Client cookie
+- Google Analytics (3 or 4)
+- Other tracking providers
+
 Request body
 
-[img]
+``` json
+{
+    "customers": [
+        {
+            "query_id": "af76e5",
+            "consumer_id": "w3e0-p8xc",
+            "state": {
+            "contract": "XL", 
+            "age": 37,
+            //...
+        },
+    ],
+    "actions": [
+        "actionA",
+        "actionB",
+        "actionN",
+        //...
+    ],
+    "limit": 3,
+    "test_api": false
+}
+```
 
 Responses
 
-[img]
+``` json
+[
+  {
+    "query_id": "af76e5",
+      "actions": [
+        "actionC",
+        "actionA",
+        "actionB",
+        //…
+      ]
+  },
+  //…
+]
+```
+
+##### `POST /action/{case_id}/select/batch` Tell goodmoves which action was selected
+Record the action that was selected by the client from the list of actions returned by a previous call to POST /action.
+Request body
+
+``` json
+{
+  "selection": [
+    {
+      "query_id": "af76e5",
+      "action": "actionC"
+    },
+    //...
+  ],
+  "test_api": false
+}
+```
+
+Responses
+
+``` json
+{
+  "status": 1
+}
+```
+
+
+##### `POST /reward/{case_id}/batch` Send a reward related to customer
+Process a rewards signal for the given query_id.
+Request body
+
+``` json
+{
+  "rewards":[
+    {
+      "query_id": "af76e5",
+      "consumer_id": "w3e0-p8xc",
+      "event_type": "add_to_basket",
+      "value": 1.337
+    },
+    //...
+  ],
+  "test_api": false
+}
+```
+
+Responses
+``` json
+{
+  "status": 1
+}
+```
+
+#### Endpoints Recommendations
+##### `POST /recommendation/{case_id}`
+
+Request body
+``` json
+{
+  "limit": 3,
+  "test_api": false,
+  "customer_id": "c62wz-sr8vq-91yr7-exadpjx6ll",
+  "query_id": "af76e514-f597-e73b-fb49-d61573d2f63a",
+  "state": {
+    "page_id": "products/529385c",
+    "search_strings": [
+      "Couch",
+      "Chair"
+    ],
+    "products_viewed": [
+      "876539a",
+      "404955e",
+      "019643a"
+    ],
+    "products_scrolled": [
+      "876539a",
+      "404955e",
+      "019643a"
+    ],
+    "products_basket": [
+      "876539a",
+      "404955e",
+      "019643a"
+    ],
+    "products_bought": [
+      "876539a",
+      "404955e",
+      "019643a"
+    ]
+  }
+}
+```
+Response
+
+``` json
+{
+  "status": 0,
+  "query_id": "af76e514-f597-e73b-fb49-d61573d2f63a",
+  "actions": [
+    "actionC"
+  ],
+  "status": 1
+}
+```
+##### `POST /feed/{case_id}`
+
+Response
+
+``` json
+{
+  "status": 1
+}
+```
+
+
+##### `POST /feed/{case_id}/update`
+
+Response
+
+``` json
+{
+  "status": 1
+}
+```
+
