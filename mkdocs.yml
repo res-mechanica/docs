@@ -1,0 +1,6 @@
+site_name: goodmoves API docs
+
+theme:
+  name: material
+  features:
+    - navigation.sections
