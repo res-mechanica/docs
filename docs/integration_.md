@@ -33,7 +33,20 @@ the query_id. It is an arbitrary string that allows us to relate the separate ca
 action update, and reward submission.
 <br>
 
-[img]
+
+> Sources of Data
+> 
+> For a seamless integration, it is important to know where you can get the necessary data from.
+> The larger a company, the more tools and systems may be at work. Consider which would support real-time interaction best, and which allow you to inform the recipient (employee or customer) about the next best action.
+> 
+> Here are some suggestions: 
+>  - Product feeds
+>  - Google Tag Manager
+>  - CRM software
+>  - campaign management
+>  - marketing automation
+>  - e-commerce-suite
+>  - data warehouse / data lake
 
 
 ## Ways to integrate
@@ -41,6 +54,8 @@ action update, and reward submission.
 
 What an end-to-end solution will look like highly depends on the software and processes present. Here are some basic
 approaches on how to integrate goodmoves within your current system:
+
+![](./static/Integration-Ways.png)
 
 
 ## GDPR Notice
