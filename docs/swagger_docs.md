@@ -8,7 +8,7 @@
 <!-- `SwaggerUIBundle` is now available on the page -->
 <script>
 const ui = SwaggerUIBundle({
-    url: 'https://dev.api.goodmoves.ai/v3/openapi.json',
+    url: 'https://api.goodmoves.ai/v3/openapi.json',
 oauth2RedirectUrl: window.location.origin + '/docs/oauth2-redirect',
     dom_id: '#swagger-ui',
     presets: [
